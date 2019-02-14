@@ -1,17 +1,23 @@
 console.log("starting app");
 
-// const fs = require("fs");
-// const os = require("os");
-// const notes = require("./notes.js")
+const fs = require('fs');
 const _ = require('lodash');
+const yargs = require('yargs')
 
-// console.log(_.isString(true));
-// console.log(_.isString("stringsd"))
-const filterdArray = _.uniq(["The","Vish",1,"Vish",1,2,3,4,"Pro"]);
-console.log(filterdArray);
+const notes = require("./notes.js");
 
-// const sum = notes.add(9,-2);
-// console.log(sum);
+const argv = yargs.argv;
+var command = argv._[0];
+console.log("command:", command);
 
-// const user=os.userInfo();
-// fs.appendFile('greetings.txt',`Hello ${user.username}!`);
+if (command === "add") {
+    notes.addNote(argv.title,argv.body);
+} else if (command === "list") {
+    notes.getAll();
+} else if (command === "read") {
+    notes.read(argv.title);
+} else if (command === "remove") {
+    notes.remove(argv.title)
+} else {
+    console.log("command not recognized");
+}
