@@ -8,5 +8,7 @@
   },
   "author": "Vishal Mhatre",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {
+    "lodash": "^4.17.11"
+  }
 }
