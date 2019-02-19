@@ -10,6 +10,7 @@ const geocodeAddress = (address, callback) => {
         } else if (response.statusCode !== 200) {
             callback("Address not found!")
         } else {
+            console.log(`Address:${body.results[0].locations[0].adminArea5},${body.results[0].locations[0].adminArea3},${body.results[0].locations[0].adminArea1}.`)
             callback(undefined, {
                 latitude: body.results[0].locations[0].latLng.lat,
                 longitude: body.results[0].locations[0].latLng.lng
